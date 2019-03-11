@@ -42,6 +42,10 @@ class MainForm extends Component {
     this.setState({ [input]: event.target.value });
   };
 
+  handleDropdown = ({ value, input }) => {
+    this.setState({ [input]: value });
+  };
+
   render() {
     const { step } = this.state;
     const {
@@ -80,6 +84,7 @@ class MainForm extends Component {
           <EnterEngagement
             nextStep={this.nextStep}
             handleChange={this.handleChange}
+            handleDropdown={this.handleDropdown}
             values={values}
           />
         );
@@ -89,6 +94,7 @@ class MainForm extends Component {
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             handleChange={this.handleChange}
+            handleDropdown={this.handleDropdown}
             values={values}
           />
         );
@@ -98,6 +104,7 @@ class MainForm extends Component {
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             handleChange={this.handleChange}
+            handleDropdown={this.handleDropdown}
             values={values}
           />
         );
@@ -107,6 +114,7 @@ class MainForm extends Component {
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             handleChange={this.handleChange}
+            handleDropdown={this.handleDropdown}
             values={values}
           />
         );
