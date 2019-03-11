@@ -24,27 +24,32 @@ class AdditionalProjectDetails extends Component {
             selection
             placeholder="Engagement Model"
             defaultValue={values.engagementModel}
-            onChange={this.props.handleChange("engagementModel")}
+            onChange={(e, { value }) => {
+              this.props.handleDropdown({
+                value: value,
+                input: "engagementModel"
+              });
+            }}
             options={[
               {
                 key: "StaffAug.(LVL1)",
                 text: "Staff Aug. (LVL 1)",
-                value: "StaffAug.(LVL1)"
+                value: "Staff Aug.(LVL 1) "
               },
               {
                 key: "MngdCap/T&M(LVL2)",
                 text: "Managed Capacity/T&M (LVL 2)",
-                value: "MngdCap/T&M(LVL2)"
+                value: "Managed Capacity/T&M (LVL 2) "
               },
               {
                 key: "Proj/Out(LVL3)",
                 text: "Projects/Outcome (LVL 3)",
-                value: "Proj/Out(LVL3)"
+                value: "Projects/Outcome (LVL 3) "
               },
               {
                 key: "MngdServ(LVL4)",
                 text: "Mangaged Service (LVL 4)",
-                value: "MngdServ(LVL4)"
+                value: "MMangaged Service (LVL 4) "
               }
             ]}
           />
@@ -52,12 +57,17 @@ class AdditionalProjectDetails extends Component {
             fluid
             selection
             placeholder="Staffing Model"
-            onChange={this.props.handleChange("staffingModel")}
+            onChange={(e, { value }) => {
+              this.props.handleDropdown({
+                value: value,
+                input: "staffingModel"
+              });
+            }}
             defaultValue={values.staffingModel}
             options={[
-              { key: "Onshore", text: "Onshore", value: "Onshore" },
-              { key: "Offshore", text: "Offshore", value: "Offshore" },
-              { key: "RightShore", text: "RightShore", value: "RightShore" }
+              { key: "Onshore", text: "Onshore", value: "Onshore " },
+              { key: "Offshore", text: "Offshore", value: "Offshore " },
+              { key: "RightShore", text: "RightShore", value: "RightShore " }
             ]}
           />
           <Form.Field>

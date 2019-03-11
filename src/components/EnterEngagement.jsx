@@ -17,23 +17,28 @@ class EnterEngagement extends Component {
             fluid
             selection
             placeholder="Client Name"
-            onChange={this.props.handleChange("industry")}
+            onChange={(e, { value }) => {
+              this.props.handleDropdown({
+                value: value,
+                input: "clientName"
+              });
+            }}
             defaultValue={values.clientName}
             options={[
               {
                 key: "BCBS",
                 text: "BCBS",
-                value: "BCBS"
+                value: "BCBS "
               },
               {
                 key: "Medtronic",
                 text: "Medtronic",
-                value: "Medtronic"
+                value: "Medtronic "
               },
               {
                 key: "Thomson Reuters",
-                text: "Thomson Reuterss",
-                value: "Thomson Reuters"
+                text: "Thomson Reuters",
+                value: "Thomson Reuters "
               }
             ]}
           />
@@ -42,28 +47,33 @@ class EnterEngagement extends Component {
             fluid
             selection
             placeholder="Engagement Name"
-            onChange={this.props.handleChange("technology")}
+            onChange={(e, { value }) => {
+              this.props.handleDropdown({
+                value: value,
+                input: "engagementName"
+              });
+            }}
             defaultValue={values.engagementName}
             options={[
               {
                 key: "Discov&CloudMigrRead",
                 text: "Discovery & Cloud Migration Readiness",
-                value: "Discov&CloudMigrRead"
+                value: "Discovery & Cloud Migration Readiness "
               },
               {
                 key: "EngageName2",
                 text: "Engagement Name 2",
-                value: "EngageName2"
+                value: "Engagement Name 2 "
               },
               {
                 key: "EngageName3",
                 text: "Engagement Name 3",
-                value: "EngageName3"
+                value: "Engagement Name 3 "
               },
               {
                 key: "EngageName4",
                 text: "Engagement Name 4",
-                value: "EngageName4"
+                value: "Engagement Name 4 "
               }
             ]}
           />
