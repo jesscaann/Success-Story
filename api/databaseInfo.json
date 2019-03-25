@@ -1,0 +1,12 @@
+{
+  "DefaultDirectyOrganization": "https://nam05.safelinks.protection.outlook.com/?url=https%3A%2F%2Finvitations.microsoft.com%2Fredeem%2F%3Ftenant%3D8d164dad-8a70-4677-8727-e64590ae493c%26user%3D3b9bd069-13a7-43a5-b526-c89eb3e980a0%26ticket%3DkjZ6gCzP1FP2BasfvPFpDMqSvhcpzazHf3csdg2OlZ0%253d%26ver%3D2.0&data=01%7C01%7Ccmkopp%40stcloudstate.edu%7Cc7b6af3155dd4eb3362008d6abeabeb3%7C5e40e2ed600b4eeaa9851d0c9dcca629%7C0&sdata=kOh%2FBFMh22fv6qtkQQTN30oOvB0IzhvpKoHXuQ9Q8NY%3D&reserved=0",
+  "dbName": "SogetiCaseStudy",
+  "ServerName": "sogetiato",
+  "ServerAdminLogin": "atoadmin",
+  "ConectionString": "Server=tcp:sogetiscsu.database.windows.net,1433;Initial Catalog=SogetiCaseStudy;Persist Security Info=False;User ID=atoadmin;Password=SogetiAto21;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+  "NeededSoftware": [
+    "SQL Server management studio",
+    "DML done through VisualStudio through EntityFramework"
+  ],
+  "IP": "sqlserver management studio will give you global IP"
+}
