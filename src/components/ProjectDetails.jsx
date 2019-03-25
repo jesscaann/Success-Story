@@ -11,8 +11,18 @@ class ProjectDetails extends Component {
     this.props.prevStep();
   };
 
+  canBeSubmitted() {
+    const { values } = this.props;
+    return (
+      values.industry.length > 0 &&
+      values.technology.length > 0 &&
+      values.practice.length > 0
+    );
+  }
+
   render() {
     const { values } = this.props;
+    const isEnabled = this.canBeSubmitted();
     return (
       <Form>
         <h1 className="ui centered">Project Details</h1>
@@ -157,7 +167,9 @@ class ProjectDetails extends Component {
           />
         </Form.Group>
         <Button onClick={this.back}>Previous</Button>
-        <Button onClick={this.saveAndContinue}>Enter Additional Details</Button>
+        <Button disabled={!isEnabled} onClick={this.saveAndContinue}>
+          Enter Additional Details
+        </Button>
       </Form>
     );
   }

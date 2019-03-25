@@ -7,8 +7,14 @@ class EnterEngagement extends Component {
     this.props.nextStep();
   };
 
+  canBeSubmitted() {
+    const { values } = this.props;
+    return values.clientName.length > 0 && values.engagementName.length > 0;
+  }
+
   render() {
     const { values } = this.props;
+    const isEnabled = this.canBeSubmitted();
     return (
       <Form>
         <h1 className="ui centered">Select Engagement Details</h1>
@@ -78,7 +84,10 @@ class EnterEngagement extends Component {
             ]}
           />
         </Form.Group>
-        <Button onClick={this.saveAndContinue}> Continue</Button>
+        <Button disabled={!isEnabled} onClick={this.saveAndContinue}>
+          {" "}
+          Continue
+        </Button>
       </Form>
     );
   }
