@@ -3,7 +3,7 @@
   "dbName": "SogetiCaseStudy",
   "ServerName": "sogetiato",
   "ServerAdminLogin": "atoadmin",
-  "ConectionString": "Server=tcp:sogetiscsu.database.windows.net,1433;Initial Catalog=SogetiCaseStudy;Persist Security Info=False;User ID=atoadmin;Password=SogetiAto21;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+  "ConectionString": "Server=tcp:sogetiscsu.database.windows.net,1433;Initial Catalog=SogetiCaseStudy;Persist Security Info=False;User ID=<>;Password=<>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
   "NeededSoftware": [
     "SQL Server management studio",
     "DML done through VisualStudio through EntityFramework"
