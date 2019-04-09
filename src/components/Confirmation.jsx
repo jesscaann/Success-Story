@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Header, Button, List, Table } from "semantic-ui-react";
+import { Header, Button, List, Table, Menu } from "semantic-ui-react";
 
 class Confirmation extends Component {
   saveAndContinue = e => {
@@ -10,6 +10,20 @@ class Confirmation extends Component {
   back = e => {
     e.preventDefault();
     this.props.prevStep();
+  };
+  handleMenu = e => {
+    e.preventDefault();
+    this.props.handleMainMenu();
+  };
+
+  handleDetails = e => {
+    e.preventDefault();
+    this.props.handleEnterDetails();
+  };
+
+  handleSearch = e => {
+    e.preventDefault();
+    this.props.handleEnterSearch();
   };
 
   render() {
@@ -33,6 +47,20 @@ class Confirmation extends Component {
 
     return (
       <div>
+        <Menu>
+          <Menu.Item name="1" onClick={this.handleMenu}>
+            Home
+          </Menu.Item>
+
+          <Menu.Item name="2" onClick={this.handleDetails}>
+            Enter Details
+          </Menu.Item>
+
+          <Menu.Item name="9" onClick={this.handleSearch}>
+            Search
+          </Menu.Item>
+        </Menu>
+
         <Header size="huge"> Engagement Details </Header>
         <Header size="medium">Engagement Name:</Header>
         <List.Content>{engagementName}</List.Content>
