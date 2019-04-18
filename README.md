@@ -14,8 +14,9 @@
 - react-dom
 - react-scripts
 - semantic-ui-react
+- axios
 ### Installation:
-	npm install react react-dom react-scripts semantic-ui-react
+	npm install axios react react-dom react-scripts semantic-ui-react --save
 
  
 
