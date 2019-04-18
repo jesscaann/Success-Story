@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, Button, Menu } from "semantic-ui-react";
+import casestudy from "../api/casestudy";
 
 class EnterEngagement extends Component {
   saveAndContinue = e => {
@@ -27,9 +28,22 @@ class EnterEngagement extends Component {
     this.props.handleEnterSearch();
   };
 
+  getCaseStudies = async term => {
+    const practice = {
+      practiceName: "ACT-NMBA"
+    };
+    await casestudy.post("/practices/", { practice }).then(res => {
+      console.log("response below");
+      console.log(res);
+      console.log("response data below");
+      console.log(res.data);
+    });
+  };
+
   render() {
     const { values } = this.props;
     const isEnabled = this.canBeSubmitted();
+    this.getCaseStudies();
     return (
       <div>
         <Menu>

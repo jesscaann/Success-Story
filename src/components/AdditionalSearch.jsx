@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Form, Button, Menu } from "semantic-ui-react";
-import { throws } from "assert";
 
 class AdditionalSearch extends Component {
   saveAndContinue = e => {
