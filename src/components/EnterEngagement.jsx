@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Form, Button, Menu } from "semantic-ui-react";
-import casestudy from "../api/casestudy";
+import RESTapi from "../api/restapi";
 
 class EnterEngagement extends Component {
+  state = { clients: [], engagements: [] };
   saveAndContinue = e => {
     e.preventDefault();
     this.props.nextStep();
@@ -28,22 +29,17 @@ class EnterEngagement extends Component {
     this.props.handleEnterSearch();
   };
 
-  getCaseStudies = async term => {
-    const practice = {
-      practiceName: "ACT-NMBA"
-    };
-    await casestudy.post("/practices/", { practice }).then(res => {
-      console.log("response below");
-      console.log(res);
-      console.log("response data below");
-      console.log(res.data);
+  componentDidMount() {
+    RESTapi.getClients().then(res => {
+      this.setState({ clients: res });
     });
-  };
-
+    RESTapi.getEngagementNames().then(res => {
+      this.setState({ engagements: res });
+    });
+  }
   render() {
     const { values } = this.props;
     const isEnabled = this.canBeSubmitted();
-    this.getCaseStudies();
     return (
       <div>
         <Menu>
@@ -74,23 +70,7 @@ class EnterEngagement extends Component {
                 });
               }}
               defaultValue={values.clientName}
-              options={[
-                {
-                  key: "BCBS",
-                  text: "BCBS",
-                  value: "BCBS "
-                },
-                {
-                  key: "Medtronic",
-                  text: "Medtronic",
-                  value: "Medtronic "
-                },
-                {
-                  key: "Thomson Reuters",
-                  text: "Thomson Reuters",
-                  value: "Thomson Reuters "
-                }
-              ]}
+              options={this.state.clients}
             />
 
             <Form.Dropdown
@@ -104,28 +84,7 @@ class EnterEngagement extends Component {
                 });
               }}
               defaultValue={values.engagementName}
-              options={[
-                {
-                  key: "Discov&CloudMigrRead",
-                  text: "Discovery & Cloud Migration Readiness",
-                  value: "Discovery & Cloud Migration Readiness "
-                },
-                {
-                  key: "EngageName2",
-                  text: "Engagement Name 2",
-                  value: "Engagement Name 2 "
-                },
-                {
-                  key: "EngageName3",
-                  text: "Engagement Name 3",
-                  value: "Engagement Name 3 "
-                },
-                {
-                  key: "EngageName4",
-                  text: "Engagement Name 4",
-                  value: "Engagement Name 4 "
-                }
-              ]}
+              options={this.state.engagements}
             />
           </Form.Group>
           <Button disabled={!isEnabled} onClick={this.saveAndContinue}>
