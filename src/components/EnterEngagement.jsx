@@ -32,7 +32,7 @@ class EnterEngagement extends Component {
     const practice = {
       practiceName: "ACT-NMBA"
     };
-    await casestudy.post("/practices/", { practice }).then(res => {
+    await casestudy.get("/practices/", { practice }).then(res => {
       console.log("response below");
       console.log(res);
       console.log("response data below");
