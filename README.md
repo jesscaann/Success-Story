@@ -9,14 +9,21 @@
  - Azure SQL Database
  - Azure DevOPs
 
-## JS Dependencies:
+### JS Dependencies:
 - react
 - react-dom
 - react-scripts
 - semantic-ui-react
-- axios
-### Installation:
-	npm install axios react react-dom react-scripts semantic-ui-react --save
+## Dev Install (front end):
+Type into your terminal:
+
+    npm install axios react react-dom react-scripts semantic-ui-react --save
+or
+```npm install```
+
+Followed by:
+
+    npm audit fix
 
  
 
