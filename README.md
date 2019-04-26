@@ -24,6 +24,7 @@ or
 ```npm install```
 
 Followed by
+
 ```npm audit fix```
 
  
