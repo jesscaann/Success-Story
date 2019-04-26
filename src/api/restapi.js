@@ -1,6 +1,9 @@
 import api from "./axios-rest-connection";
 
 class axiosHandler {
+  static getIndustries = async () => {
+    var industries;
+  };
   static getClients = async () => {
     var clients = {};
     await api.get("/clients/").then(res => {
