@@ -14,15 +14,15 @@ import CaseStudyResult from "./CaseStudyResult";
 class MainForm extends Component {
   state = {
     step: 1,
-    clientName: "",
+    clientName: "", //id
     engagementName: "",
     businessProblem: "",
     solutionDescription: "",
     resultsAchieved: "",
-    industry: "",
-    technology: "",
-    practice: "",
-    engagementModel: "",
+    industry: "", //id
+    technology: "", //id
+    practice: "", //id
+    engagementModel: "", //id
     staffingModel: "",
     sizeOfEngagement: "",
     durationOfEngagement: "",
@@ -65,8 +65,12 @@ class MainForm extends Component {
     this.setState({ [input]: event.target.value });
   };
 
-  handleDropdown = ({ value, input }) => {
-    this.setState({ [input]: value });
+  // handleDropdown = ({ value, input }) => {
+  //   this.setState({ [input]: value });
+  // };
+  handleDropdown = choice => {
+    console.log(choice);
+    this.setState({ [choice.input]: choice.value });
   };
 
   clearAdditional = () => {
