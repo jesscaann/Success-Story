@@ -10,7 +10,7 @@ import SearchPage from "./SearchPage";
 import AdditionalSearch from "./AdditionalSearch";
 import SearchResults from "./SearchResults";
 import CaseStudyResult from "./CaseStudyResult";
-import DATA from "../api/data";
+import DataHandler from "../api/dataHandler";
 
 class MainForm extends Component {
   state = {
@@ -70,7 +70,6 @@ class MainForm extends Component {
   //   this.setState({ [input]: value });
   // };
   handleDropdown = choice => {
-    console.log(choice);
     this.setState({ [choice.input]: choice.value });
   };
 
@@ -103,7 +102,7 @@ class MainForm extends Component {
   };
 
   componentDidMount() {
-    new DATA();
+    new DataHandler();
   }
   render() {
     const { step } = this.state;

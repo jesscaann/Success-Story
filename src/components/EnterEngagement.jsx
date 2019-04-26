@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form, Button, Menu } from "semantic-ui-react";
-import DATA from "../api/data";
+import DataHandler from "../api/dataHandler";
 
 class EnterEngagement extends Component {
   state = { clients: [], engagements: [] };
@@ -30,8 +30,8 @@ class EnterEngagement extends Component {
   };
 
   componentDidMount() {
-    this.setState({ clients: new DATA().getClients() });
-    this.setState({ engagements: new DATA().getEngagementNames() });
+    this.setState({ clients: new DataHandler().get("clients") });
+    this.setState({ engagements: new DataHandler().get("engagementNames") });
   }
   render() {
     const { values } = this.props;

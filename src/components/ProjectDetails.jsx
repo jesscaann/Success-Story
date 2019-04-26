@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Form, Button, Menu } from "semantic-ui-react";
+import DataHandler from "../api/dataHandler";
 
 class ProjectDetails extends Component {
+  state = { industries: [], technologies: [], practices: [] };
   saveAndContinue = e => {
     e.preventDefault();
     this.props.nextStep();
@@ -33,6 +35,14 @@ class ProjectDetails extends Component {
       values.technology.length > 0 &&
       values.practice.length > 0
     );
+  }
+
+  componentDidMount() {
+    this.setState({
+      industries: new DataHandler().get("industries"),
+      technologies: new DataHandler().get("technologies"),
+      practices: new DataHandler().get("practices")
+    });
   }
 
   render() {
@@ -68,64 +78,7 @@ class ProjectDetails extends Component {
                 });
               }}
               defaultValue={values.industry}
-              options={[
-                {
-                  key: "Aero&Def",
-                  text: "Aerospace & Defense",
-                  value: "Aerospace & Defense "
-                },
-                {
-                  key: "Agric,Autom",
-                  text: "Agriculture, Automotive",
-                  value: " Agriculture, Automotive "
-                },
-                {
-                  key: "Bank&CapMarkets",
-                  text: "Banking & Capital Markets",
-                  value: "Banking & Capital Markets "
-                },
-                {
-                  key: "ConsumerProd",
-                  text: "Consumer Products",
-                  value: "Consumer Products "
-                },
-                {
-                  key: "Elect&HTech",
-                  text: "Electronics & High Tech",
-                  value: "Electronics & High Tech "
-                },
-                {
-                  key: "Energy&Util",
-                  text: "Energy & Utilities",
-                  value: "Energy & Utilities "
-                },
-                {
-                  key: "Gov&PublicSect",
-                  text: "Government & Public Sector",
-                  value: "Government & Public Sector "
-                },
-                {
-                  key: "Health&LifeSci",
-                  text: "Healthcare & Life Sciences",
-                  value: "Healthcare & Life Sciences "
-                },
-                { key: "Insur", text: "Insurance", value: "Insurance " },
-                {
-                  key: "Manuf&IndustProd",
-                  text: "Manufacturing & Industrial Products",
-                  value: "Manufacturing & Industrial Products "
-                },
-                {
-                  key: "Media&Entert",
-                  text: "Media & Entertainment",
-                  value: "Media & Entertainment "
-                },
-                {
-                  key: "NatResour",
-                  text: "Natural Resources",
-                  value: "Natural Resources "
-                }
-              ]}
+              options={this.state.industries}
             />
 
             <Form.Dropdown
@@ -140,27 +93,7 @@ class ProjectDetails extends Component {
                 });
               }}
               defaultValue={values.technology}
-              options={[
-                { key: ".NET", text: ".NET", value: ".NET " },
-                { key: "jScript", text: "jScript", value: "jScript " },
-                { key: "SQLDB", text: "SQL Database", value: "SQL Database " },
-                {
-                  key: "Non-SQLDB",
-                  text: "Non-SQL Database",
-                  value: "Non-SQL Database"
-                },
-                {
-                  key: "RestfulAPIs",
-                  text: "Restful APIs",
-                  value: "Restful APIs "
-                },
-                { key: "Azure", text: "Azure", value: "Azure " },
-                { key: "AWS", text: "AWS", value: "AWS " },
-                { key: "GCS", text: "GCS", value: "GCS " },
-                { key: "Selenium", text: "Selenium", value: "Selenium " },
-                { key: "Specflow", text: "Specflow", value: "Specflow " },
-                { key: "HP", text: "HP", value: "HP " }
-              ]}
+              options={this.state.technologies}
             />
             <Form.Dropdown
               fluid
@@ -173,25 +106,7 @@ class ProjectDetails extends Component {
                 });
               }}
               defaultValue={values.practice}
-              options={[
-                { key: "ACT-dev", text: "ACT-dev", value: "ACT-dev " },
-                { key: "ACT-PMBA", text: "ACT-PMBA", value: "ACT-PMBA " },
-                {
-                  key: "Test&Ana",
-                  text: "Testing & Analytics",
-                  value: "Testing & Analytics "
-                },
-                {
-                  key: "DigTrans",
-                  text: "Digital Transformation",
-                  value: "Digital Transformation "
-                },
-                {
-                  key: "Insight&Data",
-                  text: "Insights & Data",
-                  value: "Insights & Data "
-                }
-              ]}
+              options={this.state.practices}
             />
           </Form.Group>
           <Button onClick={this.back}>Previous</Button>
