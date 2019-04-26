@@ -1,6 +1,6 @@
 import api from "./axios-rest-connection";
 
-class axiosHandler {
+class restapi {
   static getIndustries = async () => {
     var industries;
   };
@@ -71,4 +71,4 @@ class axiosHandler {
   };
 }
 
-export default axiosHandler;
+export default restapi;

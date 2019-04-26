@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form, Button, Menu } from "semantic-ui-react";
-import RESTapi from "../api/restapi";
+import DATA from "../api/data";
 
 class EnterEngagement extends Component {
   state = { clients: [], engagements: [] };
@@ -30,12 +30,8 @@ class EnterEngagement extends Component {
   };
 
   componentDidMount() {
-    RESTapi.getClients().then(res => {
-      this.setState({ clients: res });
-    });
-    RESTapi.getEngagementNames().then(res => {
-      this.setState({ engagements: res });
-    });
+    this.setState({ clients: new DATA().getClients() });
+    this.setState({ engagements: new DATA().getEngagementNames() });
   }
   render() {
     const { values } = this.props;

@@ -59,7 +59,6 @@ class ProjectDetails extends Component {
           <Form.Group widths="equal">
             <Form.Dropdown
               fluid
-              multiple
               selection
               placeholder="Industry"
               onChange={(e, { value }) => {
@@ -165,7 +164,6 @@ class ProjectDetails extends Component {
             />
             <Form.Dropdown
               fluid
-              multiple
               selection
               placeholder="Practice"
               onChange={(e, { value }) => {

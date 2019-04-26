@@ -10,12 +10,13 @@ import SearchPage from "./SearchPage";
 import AdditionalSearch from "./AdditionalSearch";
 import SearchResults from "./SearchResults";
 import CaseStudyResult from "./CaseStudyResult";
+import DATA from "../api/data";
 
 class MainForm extends Component {
   state = {
     step: 1,
     clientName: "", //id
-    engagementName: "",
+    engagementName: "", //id
     businessProblem: "",
     solutionDescription: "",
     resultsAchieved: "",
@@ -23,7 +24,7 @@ class MainForm extends Component {
     technology: "", //id
     practice: "", //id
     engagementModel: "", //id
-    staffingModel: "",
+    staffingModel: "", //id
     sizeOfEngagement: "",
     durationOfEngagement: "",
     engagementValue: ""
@@ -101,6 +102,9 @@ class MainForm extends Component {
     });
   };
 
+  componentDidMount() {
+    new DATA();
+  }
   render() {
     const { step } = this.state;
     const {
