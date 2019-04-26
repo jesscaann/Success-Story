@@ -10,6 +10,7 @@
  - Azure DevOPs
 
 ### JS Dependencies:
+- axios
 - react
 - react-dom
 - react-scripts
