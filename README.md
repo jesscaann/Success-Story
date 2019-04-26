@@ -19,11 +19,13 @@ Type into your terminal:
 
     npm install axios react react-dom react-scripts semantic-ui-react --save
 or
+
+
 ```npm install```
 
-Followed by:
+Followed by
 
-    npm audit fix
+```npm audit fix```
 
  
 
