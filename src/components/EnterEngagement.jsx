@@ -30,8 +30,8 @@ class EnterEngagement extends Component {
   };
 
   componentDidMount() {
-    this.setState({ clients: new DATA().getClients() });
-    this.setState({ engagements: new DATA().getEngagementNames() });
+    this.setState({ clients: new DATA().get("clients") });
+    this.setState({ engagements: new DATA().get("engagementNames") });
   }
   render() {
     const { values } = this.props;

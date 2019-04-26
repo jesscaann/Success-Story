@@ -70,7 +70,6 @@ class MainForm extends Component {
   //   this.setState({ [input]: value });
   // };
   handleDropdown = choice => {
-    console.log(choice);
     this.setState({ [choice.input]: choice.value });
   };
 
