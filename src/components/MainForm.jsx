@@ -10,7 +10,7 @@ import SearchPage from "./SearchPage";
 import AdditionalSearch from "./AdditionalSearch";
 import SearchResults from "./SearchResults";
 import CaseStudyResult from "./CaseStudyResult";
-import DATA from "../api/data";
+import DATA from "../api/dataHandler";
 
 class MainForm extends Component {
   state = {

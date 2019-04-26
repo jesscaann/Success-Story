@@ -96,16 +96,16 @@ const privateMethods = {
  * an instance of the DATA class and not a new one.
  * This instance can then call gets and posts eventually
  */
-class DATA {
+class DataHandler {
   constructor() {
-    if (!DATA.instance) {
-      DATA.instance = this;
+    if (!DataHandler.instance) {
+      DataHandler.instance = this;
       privateMethods.populateDATA();
 
       // testing if all data comes in
       console.log(_data);
     }
-    return DATA.instance;
+    return DataHandler.instance;
   }
 
   get(key) {
@@ -117,4 +117,4 @@ class DATA {
   }
 }
 
-export default DATA;
+export default DataHandler;

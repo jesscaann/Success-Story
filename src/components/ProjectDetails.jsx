@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form, Button, Menu } from "semantic-ui-react";
-import DATA from "../api/data";
+import DATA from "../api/dataHandler";
 
 class ProjectDetails extends Component {
   state = { industries: [], technologies: [], practices: [] };
