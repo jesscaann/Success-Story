@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form, Button, Menu } from "semantic-ui-react";
-import DATA from "../api/dataHandler";
+import DataHandler from "../api/dataHandler";
 
 class ProjectDetails extends Component {
   state = { industries: [], technologies: [], practices: [] };
@@ -39,9 +39,9 @@ class ProjectDetails extends Component {
 
   componentDidMount() {
     this.setState({
-      industries: new DATA().get("industries"),
-      technologies: new DATA().get("technologies"),
-      practices: new DATA().get("practices")
+      industries: new DataHandler().get("industries"),
+      technologies: new DataHandler().get("technologies"),
+      practices: new DataHandler().get("practices")
     });
   }
 
