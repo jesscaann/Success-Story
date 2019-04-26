@@ -10,20 +10,21 @@ import SearchPage from "./SearchPage";
 import AdditionalSearch from "./AdditionalSearch";
 import SearchResults from "./SearchResults";
 import CaseStudyResult from "./CaseStudyResult";
+import DATA from "../api/data";
 
 class MainForm extends Component {
   state = {
     step: 1,
-    clientName: "",
-    engagementName: "",
+    clientName: "", //id
+    engagementName: "", //id
     businessProblem: "",
     solutionDescription: "",
     resultsAchieved: "",
-    industry: "",
-    technology: "",
-    practice: "",
-    engagementModel: "",
-    staffingModel: "",
+    industry: "", //id
+    technology: "", //id
+    practice: "", //id
+    engagementModel: "", //id
+    staffingModel: "", //id
     sizeOfEngagement: "",
     durationOfEngagement: "",
     engagementValue: ""
@@ -65,8 +66,12 @@ class MainForm extends Component {
     this.setState({ [input]: event.target.value });
   };
 
-  handleDropdown = ({ value, input }) => {
-    this.setState({ [input]: value });
+  // handleDropdown = ({ value, input }) => {
+  //   this.setState({ [input]: value });
+  // };
+  handleDropdown = choice => {
+    console.log(choice);
+    this.setState({ [choice.input]: choice.value });
   };
 
   clearAdditional = () => {
@@ -97,6 +102,9 @@ class MainForm extends Component {
     });
   };
 
+  componentDidMount() {
+    new DATA();
+  }
   render() {
     const { step } = this.state;
     const {
