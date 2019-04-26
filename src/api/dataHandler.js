@@ -84,6 +84,31 @@ const privateMethods = {
     privateMethods.populateStaffingModels();
     privateMethods.populateCaseStudyTechnologies();
     privateMethods.populateCaseStudies();
+  },
+  /**
+   * Need to pull IDs for
+   *  - client
+   *  - engagementName (from dummy data in the RESTapi)
+   *  - industry
+   *  - technology []
+   *  - practice
+   *  - engagementModel
+   *  - staffingModel
+   *
+   *
+   *  As well, we need to make entries for
+   *  - caseStudyTechnologies
+   *    Such that an entry is created for each technology used
+   *      caseStudy.id + technology.id * (number of Technologies)
+   *
+   *  Finally, we need to post the cs_techs and the caseStudy
+   *  handle any errors (not likely)
+   *  and re-poll the local _data store to be updated
+   */
+  formatCaseStudy(values) {
+    var newEntry = {};
+
+    return newEntry;
   }
 };
 
@@ -110,12 +135,51 @@ class DataHandler {
     return DataHandler.instance;
   }
 
+  /**
+   * Takes in a JSON of values and searches for matching
+   * IDs within the serialized data.
+   *
+   * Once found, these IDs are placed into the [entry] JSON
+   * which is then POST'd throug the RESTapi to the database
+   * @param {JSON} values
+   */
+  submitCaseStudy(values) {
+    console.log(values);
+    var entry = privateMethods.formatCaseStudy(values);
+
+    RESTapi.postCaseStudy(entry).then(_ => {
+      this.refreshData();
+    });
+  }
+
+  /**
+   * Takes in a key which will return the entries
+   * from _data at [key]
+   *
+   * This should ideally be all lowercase so as to match
+   * the api/route format
+   *
+   * As of 26/04/2019, this lowercase restriction is NOT applied
+   * @param {String} key
+   */
   get(key) {
     return JSON.parse(JSON.stringify(_data[key]));
   }
 
+  /**
+   * Makes a deep copy of the _data and
+   * returns this JSON
+   */
   toJSON() {
     return JSON.parse(JSON.stringify(_data));
+  }
+
+  /**
+   * Pulls data from the database and updates local
+   * _data snapshot
+   */
+  refreshData() {
+    privateMethods.populateDATA();
   }
 }
 

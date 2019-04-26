@@ -21,7 +21,7 @@ class MainForm extends Component {
     solutionDescription: "",
     resultsAchieved: "",
     industry: "", //id
-    technology: "", //id
+    technology: "", //id & caseStudyTechnology entries
     practice: "", //id
     engagementModel: "", //id
     staffingModel: "", //id

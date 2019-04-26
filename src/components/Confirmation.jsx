@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Header, Button, List, Table, Menu } from "semantic-ui-react";
+import DataHandler from "../api/dataHandler";
 
 class Confirmation extends Component {
   saveAndContinue = e => {
     e.preventDefault();
+    new DataHandler().submitCaseStudy(this.props.values);
     this.props.nextStep();
   };
 
@@ -44,7 +46,7 @@ class Confirmation extends Component {
         engagementValue
       }
     } = this.props;
-    console.log(this.props.values);
+
     return (
       <div>
         <Menu>
