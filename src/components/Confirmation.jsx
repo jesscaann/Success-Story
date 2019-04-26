@@ -44,7 +44,7 @@ class Confirmation extends Component {
         engagementValue
       }
     } = this.props;
-
+    console.log(this.props.values);
     return (
       <div>
         <Menu>
@@ -88,7 +88,7 @@ class Confirmation extends Component {
               <Table.Cell>Technology</Table.Cell>
               <Table.Cell>
                 {" "}
-                <List.Content> {technology}</List.Content>
+                <List.Content> {technology.join(", ")}</List.Content>
               </Table.Cell>
             </Table.Row>
             <Table.Row>

@@ -1,6 +1,8 @@
 import RESTapi from "./restapi";
 /**
- * this is the serialized database
+ * this is the serialized database. It is declared
+ * above the class definition so that it is functionally
+ * like a Private attribute
  */
 var _data = {};
 
@@ -92,8 +94,8 @@ const privateMethods = {
  * methods and attributes are declared above.
  *
  *
- * Any time new DATA() is called, this will return
- * an instance of the DATA class and not a new one.
+ * Any time new DataHandler() is called, this will return
+ * an instance of the DataHandler class and not a new one.
  * This instance can then call gets and posts eventually
  */
 class DataHandler {
