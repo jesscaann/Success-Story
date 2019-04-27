@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Form, Button, Menu } from "semantic-ui-react";
-import { throws } from "assert";
+import DataHandler from "../api/dataHandler";
 
 class AdditionalProjectDetails extends Component {
+  state = { engagementModelLevels: [], staffingModels: [] };
   saveAndContinue = e => {
     e.preventDefault();
     this.props.nextStep();
@@ -28,7 +29,14 @@ class AdditionalProjectDetails extends Component {
     this.props.handleEnterSearch();
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.setState({
+      engagementModelLevels: new DataHandler().get("engagementModelLevels")
+    });
+    this.setState({
+      staffingModels: new DataHandler().get("staffingDeliveryModels")
+    });
+  }
   render() {
     const { values } = this.props;
     return (
@@ -60,28 +68,7 @@ class AdditionalProjectDetails extends Component {
                   input: "engagementModelLevel"
                 });
               }}
-              options={[
-                {
-                  key: "StaffAug.(LVL1)",
-                  text: "Staff Aug. (LVL 1)",
-                  value: "Staff Aug.(LVL 1) "
-                },
-                {
-                  key: "MngdCap/T&M(LVL2)",
-                  text: "Managed Capacity/T&M (LVL 2)",
-                  value: "Managed Capacity/T&M (LVL 2) "
-                },
-                {
-                  key: "Proj/Out(LVL3)",
-                  text: "Projects/Outcome (LVL 3)",
-                  value: "Projects/Outcome (LVL 3) "
-                },
-                {
-                  key: "MngdServ(LVL4)",
-                  text: "Mangaged Service (LVL 4)",
-                  value: "MMangaged Service (LVL 4) "
-                }
-              ]}
+              options={this.state.engagementModelLevels}
             />
             <Form.Dropdown
               fluid
@@ -94,11 +81,7 @@ class AdditionalProjectDetails extends Component {
                 });
               }}
               defaultValue={values.staffingModel}
-              options={[
-                { key: "Onshore", text: "Onshore", value: "Onshore " },
-                { key: "Offshore", text: "Offshore", value: "Offshore " },
-                { key: "RightShore", text: "RightShore", value: "RightShore " }
-              ]}
+              options={this.state.staffingModels}
             />
             <Form.Field>
               <input

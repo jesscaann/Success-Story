@@ -74,7 +74,7 @@ const privateMethods = {
   /**
    * Calls all other population methods
    */
-  populateDATA() {
+  populateDATA: () => {
     privateMethods.populateClients();
     privateMethods.populateEngagementNames();
     privateMethods.populateIndustries();
@@ -84,7 +84,19 @@ const privateMethods = {
     privateMethods.populateStaffingModels();
     privateMethods.populateCaseStudyTechnologies();
     privateMethods.populateCaseStudies();
+    return "success";
   },
+  /**
+   * This takes in a [table] and searches _data for that particular key
+   *
+   * From there, it parses through the array of JSON entries to find if the [value]
+   * is in the entry. If so, it will return the ID of the entry. Otherwise, we can
+   * return a null or 0.
+   *
+   * @param {String} table
+   * @param {String} value
+   */
+  findId: (table, value) => {},
   /**
    * Need to pull IDs for
    *  - client
@@ -115,24 +127,21 @@ const privateMethods = {
     // each of these has to be a search to return the correct ids
 
     var foundIds = {
-      clientId: privateMethods.findId("clientName", newEntry.client),
-      industryId: privateMethods.findId("industryName", newEntry.industry),
-      practiceId: privateMethods.findId("practiceName", newEntry.practice),
+      clientId: privateMethods.findId("clients", newEntry.client),
+      industryId: privateMethods.findId("industries", newEntry.industry),
+      practiceId: privateMethods.findId("practices", newEntry.practice),
       staffingModelId: privateMethods.findId(
-        "modelName",
-        newEntry.staffingModel
+        "staffingDeliveryModels",
+        newEntry.staffingDeliveryModel
       ),
       // this one will break since the key is called engagementModel everywhere instead of engagementModelLevel
       engagementModelId: privateMethods.findId(
-        "engagementModelLevel",
+        "engagementModelLevels",
         newEntry.engagementModelLevel
       )
     };
 
     return newEntry;
-  },
-  findId(key, value) {
-    return "notFound";
   }
 };
 
@@ -154,7 +163,6 @@ class DataHandler {
       privateMethods.populateDATA();
 
       // testing if all data comes in
-      console.log(_data);
     }
     return DataHandler.instance;
   }
@@ -166,7 +174,7 @@ class DataHandler {
    * which is then POST'd throug the RESTapi to the database
    * @param {JSON} values
    */
-  submitCaseStudy(values) {
+  submitCaseStudy = values => {
     var entry = privateMethods.formatCaseStudy(values);
 
     RESTapi.postCaseStudy(entry).then(res => {
@@ -176,7 +184,7 @@ class DataHandler {
 
       this.refreshData();
     });
-  }
+  };
 
   /**
    * Takes in a key which will return the entries
@@ -188,25 +196,39 @@ class DataHandler {
    * As of 26/04/2019, this lowercase restriction is NOT applied
    * @param {String} key
    */
-  get(key) {
+  get = key => {
     return JSON.parse(JSON.stringify(_data[key]));
-  }
+  };
 
   /**
    * Makes a deep copy of the _data and
    * returns this JSON
    */
-  toJSON() {
+  toJSON = _ => {
     return JSON.parse(JSON.stringify(_data));
-  }
+  };
 
   /**
    * Pulls data from the database and updates local
    * _data snapshot
    */
-  refreshData() {
-    privateMethods.populateDATA();
-  }
+  refreshData = async () => {
+    await privateMethods.populateDATA();
+  };
+
+  /**
+   * This takes in a [key] and searches _data for that particular key
+   *
+   * From there, it parses through the array of JSON entries to find if the [value]
+   * is in the entry. If so, it will return the ID of the entry. Otherwise, we can
+   * return a null or 0.
+   *
+   * @param {String} key
+   * @param {String} value
+   */
+  findId = (key, value) => {
+    privateMethods.findId(key, value);
+  };
 }
 
 export default DataHandler;
