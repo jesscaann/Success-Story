@@ -23,7 +23,7 @@ class MainForm extends Component {
     industry: "", //id
     technology: "", //id & caseStudyTechnology entries
     practice: "", //id
-    engagementModel: "", //id
+    engagementModelLevel: "", //id
     staffingModel: "", //id
     sizeOfEngagement: "",
     durationOfEngagement: "",
@@ -93,7 +93,7 @@ class MainForm extends Component {
       industry: "",
       technology: "",
       practice: "",
-      engagementModel: "",
+      engagementModelLevel: "",
       staffingModel: "",
       sizeOfEngagement: "",
       durationOfEngagement: "",
@@ -115,7 +115,7 @@ class MainForm extends Component {
       industry,
       technology,
       practice,
-      engagementModel,
+      engagementModelLevel,
       staffingModel,
       sizeOfEngagement,
       durationOfEngagement,
@@ -130,7 +130,7 @@ class MainForm extends Component {
       industry,
       technology,
       practice,
-      engagementModel,
+      engagementModelLevel,
       staffingModel,
       sizeOfEngagement,
       durationOfEngagement,

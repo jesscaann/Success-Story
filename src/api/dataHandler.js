@@ -49,8 +49,8 @@ const privateMethods = {
       _data.practices = res;
     });
   },
-  populateEngagementModels() {
-    RESTapi.getEngagementModels().then(res => {
+  populateEngagementModelLevels() {
+    RESTapi.getEngagementModelLevels().then(res => {
       _data.engagementModelLevels = res;
     });
   },
@@ -92,7 +92,7 @@ const privateMethods = {
    *  - industry
    *  - technology []
    *  - practice
-   *  - engagementModel
+   *  - engagementModelLevel
    *  - staffingModel
    *
    *  To pull ID's...
@@ -125,7 +125,7 @@ const privateMethods = {
       // this one will break since the key is called engagementModel everywhere instead of engagementModelLevel
       engagementModelId: privateMethods.findId(
         "engagementModelLevel",
-        newEntry.engagementModel
+        newEntry.engagementModelLevel
       )
     };
 

@@ -37,7 +37,7 @@ class SearchResults extends Component {
         industry,
         technology,
         practice,
-        engagementModel,
+        engagementModelLevel,
         staffingModel,
         sizeOfEngagement,
         durationOfEngagement,

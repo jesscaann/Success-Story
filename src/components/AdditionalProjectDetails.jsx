@@ -28,6 +28,7 @@ class AdditionalProjectDetails extends Component {
     this.props.handleEnterSearch();
   };
 
+  componentDidMount() {}
   render() {
     const { values } = this.props;
     return (
@@ -52,11 +53,11 @@ class AdditionalProjectDetails extends Component {
               fluid
               selection
               placeholder="Engagement Model"
-              defaultValue={values.engagementModel}
+              defaultValue={values.engagementModellevel}
               onChange={(e, { value }) => {
                 this.props.handleDropdown({
                   value: value,
-                  input: "engagementModel"
+                  input: "engagementModelLevel"
                 });
               }}
               options={[
