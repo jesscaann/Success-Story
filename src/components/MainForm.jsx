@@ -1,3 +1,4 @@
+// #region imports
 import React, { Component } from "react";
 import MainMenu from "./MainMenu";
 import ProjectDetails from "./ProjectDetails";
@@ -11,6 +12,7 @@ import AdditionalSearch from "./AdditionalSearch";
 import SearchResults from "./SearchResults";
 import CaseStudyResult from "./CaseStudyResult";
 import DataHandler from "../api/dataHandler";
+// #endregion imports
 
 class MainForm extends Component {
   state = {
@@ -71,6 +73,7 @@ class MainForm extends Component {
   // };
   handleDropdown = choice => {
     this.setState({ [choice.input]: choice.value });
+    // console.log(choice.options);
   };
 
   clearAdditional = () => {

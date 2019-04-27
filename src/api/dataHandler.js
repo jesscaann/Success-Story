@@ -1,4 +1,5 @@
 import RESTapi from "./restapi";
+import _ from "lodash";
 /**
  * this is the serialized database. It is declared
  * above the class definition so that it is functionally
@@ -24,6 +25,7 @@ const privateMethods = {
    *    });
    * };
    */
+  //#region population
   populateClients() {
     RESTapi.getClients().then(res => {
       _data.clients = res;
@@ -86,6 +88,7 @@ const privateMethods = {
     privateMethods.populateCaseStudies();
     return "success";
   },
+  //#endregion population
   /**
    * This takes in a [table] and searches _data for that particular key
    *
@@ -96,7 +99,24 @@ const privateMethods = {
    * @param {String} table
    * @param {String} value
    */
-  findId: (table, value) => {},
+  findId: (table, value) => {
+    let dropdownOptions = _data[table];
+
+    dropdownOptions.forEach(option => {
+      if (_.includes(option, value)) {
+        // console.log("For the option:");
+        // console.log(option);
+        // console.log("This value has been found:");
+        // console.log(value);
+        // console.log("With corrosponding ID:");
+        // console.log(option.id);
+        console.log("Field:" + value + "\nID:" + option.id);
+        return option.id;
+      }
+    });
+
+    return "notFound";
+  },
   /**
    * Need to pull IDs for
    *  - client
@@ -127,12 +147,12 @@ const privateMethods = {
     // each of these has to be a search to return the correct ids
 
     var foundIds = {
-      clientId: privateMethods.findId("clients", newEntry.client),
+      clientId: privateMethods.findId("clients", newEntry.clientName),
       industryId: privateMethods.findId("industries", newEntry.industry),
       practiceId: privateMethods.findId("practices", newEntry.practice),
       staffingModelId: privateMethods.findId(
         "staffingDeliveryModels",
-        newEntry.staffingDeliveryModel
+        newEntry.staffingModel
       ),
       // this one will break since the key is called engagementModel everywhere instead of engagementModelLevel
       engagementModelId: privateMethods.findId(
@@ -141,7 +161,15 @@ const privateMethods = {
       )
     };
 
-    return newEntry;
+    console.log(foundIds);
+
+    delete newEntry.clientName;
+    delete newEntry.industry;
+    delete newEntry.practice;
+    delete newEntry.engagementModelLevel;
+    delete newEntry.staffingModel;
+
+    return _.merge(newEntry, foundIds);
   }
 };
 
@@ -177,13 +205,12 @@ class DataHandler {
   submitCaseStudy = values => {
     var entry = privateMethods.formatCaseStudy(values);
 
-    RESTapi.postCaseStudy(entry).then(res => {
-      // pull new caseStudyId
-      // call method to make appropriate caseStudyTechnolgies POST's
-      // .then(_=>{this.refreshData()});
-
-      this.refreshData();
-    });
+    console.log(entry);
+    setTimeout(() => {
+      RESTapi.postCaseStudy(entry).then(() => {
+        this.refreshData();
+      });
+    }, 1000);
   };
 
   /**
@@ -204,7 +231,7 @@ class DataHandler {
    * Makes a deep copy of the _data and
    * returns this JSON
    */
-  toJSON = _ => {
+  toJSON = () => {
     return JSON.parse(JSON.stringify(_data));
   };
 
@@ -214,20 +241,6 @@ class DataHandler {
    */
   refreshData = async () => {
     await privateMethods.populateDATA();
-  };
-
-  /**
-   * This takes in a [key] and searches _data for that particular key
-   *
-   * From there, it parses through the array of JSON entries to find if the [value]
-   * is in the entry. If so, it will return the ID of the entry. Otherwise, we can
-   * return a null or 0.
-   *
-   * @param {String} key
-   * @param {String} value
-   */
-  findId = (key, value) => {
-    privateMethods.findId(key, value);
   };
 }
 
