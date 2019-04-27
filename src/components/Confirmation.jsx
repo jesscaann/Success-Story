@@ -39,7 +39,7 @@ class Confirmation extends Component {
         industry,
         technology,
         practice,
-        engagementModel,
+        engagementModelLevel,
         staffingModel,
         sizeOfEngagement,
         durationOfEngagement,
@@ -102,7 +102,7 @@ class Confirmation extends Component {
             <Table.Row>
               <Table.Cell>Engagement Model</Table.Cell>
               <Table.Cell>
-                <List.Content>{engagementModel}</List.Content>
+                <List.Content>{engagementModelLevel}</List.Content>
               </Table.Cell>
             </Table.Row>
             <Table.Row>

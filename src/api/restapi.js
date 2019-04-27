@@ -1,6 +1,14 @@
 import api from "./axios-rest-connection";
 
 class restapi {
+  /**
+   * TODO: post the actual case study with ID's and such
+   */
+  static postCaseStudy = async entry => {
+    console.log("posting Case Study:");
+    console.log(entry);
+  };
+
   static getCaseStudies = async () => {
     /**
      * This function async polls the rest API for the

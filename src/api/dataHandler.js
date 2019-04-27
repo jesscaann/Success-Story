@@ -95,6 +95,9 @@ const privateMethods = {
    *  - engagementModel
    *  - staffingModel
    *
+   *  To pull ID's...
+   *  - Take the
+   *
    *
    *  As well, we need to make entries for
    *  - caseStudyTechnologies
@@ -106,9 +109,30 @@ const privateMethods = {
    *  and re-poll the local _data store to be updated
    */
   formatCaseStudy(values) {
-    var newEntry = {};
+    // Copy values into newEntry
+    var newEntry = JSON.parse(JSON.stringify(values));
+
+    // each of these has to be a search to return the correct ids
+
+    var foundIds = {
+      clientId: privateMethods.findId("clientName", newEntry.client),
+      industryId: privateMethods.findId("industryName", newEntry.industry),
+      practiceId: privateMethods.findId("practiceName", newEntry.practice),
+      staffingModelId: privateMethods.findId(
+        "modelName",
+        newEntry.staffingModel
+      ),
+      // this one will break since the key is called engagementModel everywhere instead of engagementModelLevel
+      engagementModelId: privateMethods.findId(
+        "engagementModelLevel",
+        newEntry.engagementModel
+      )
+    };
 
     return newEntry;
+  },
+  findId(key, value) {
+    return "notFound";
   }
 };
 
@@ -136,18 +160,20 @@ class DataHandler {
   }
 
   /**
-   * Takes in a JSON of values and searches for matching
-   * IDs within the serialized data.
+   * Takes in a JSON of values calls a formatting function
    *
    * Once found, these IDs are placed into the [entry] JSON
    * which is then POST'd throug the RESTapi to the database
    * @param {JSON} values
    */
   submitCaseStudy(values) {
-    console.log(values);
     var entry = privateMethods.formatCaseStudy(values);
 
-    RESTapi.postCaseStudy(entry).then(_ => {
+    RESTapi.postCaseStudy(entry).then(res => {
+      // pull new clientID
+      // call method to make appropriate caseStudyTechnolgies POST's
+      // .then(_=>{this.refreshData()});
+
       this.refreshData();
     });
   }
