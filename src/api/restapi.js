@@ -84,7 +84,7 @@ class restapi {
     });
     return staffingModels;
   };
-  static getEngagementModels = async () => {
+  static getEngagementModelLevels = async () => {
     var eModels = {};
     await api.get("/engagementmodels/").then(res => {
       eModels = res.data;
