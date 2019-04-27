@@ -178,7 +178,7 @@ class DataHandler {
     var entry = privateMethods.formatCaseStudy(values);
 
     RESTapi.postCaseStudy(entry).then(res => {
-      // pull new clientID
+      // pull new caseStudyId
       // call method to make appropriate caseStudyTechnolgies POST's
       // .then(_=>{this.refreshData()});
 
