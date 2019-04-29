@@ -65,6 +65,9 @@ class CaseStudyResult extends Component {
         <Header size="medium">Engagement Name:</Header>
         <List.Content>{engagementName}</List.Content>
         <br />
+        <Header size="medium">Client Name:</Header>
+        <List.Content>{clientName}</List.Content>
+        <br />
         <Header size="small">Business Challenge:</Header>
         <List.Content>{businessProblem}</List.Content>
         <br />

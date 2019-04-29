@@ -1,10 +1,12 @@
 import api from "./axios-rest-connection";
+import Storage from "./Storage";
 
 class restapi {
   /**
    * TODO: post the actual case study with ID's and such
    */
   static postCaseStudy = async entry => {
+    // Storage.formatCaseStudy();
     console.log("posting Case Study:");
     console.log(entry);
   };

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Header, Button, List, Table, Menu } from "semantic-ui-react";
 import DataHandler from "../api/dataHandler";
+import Storage from "../api/Storage";
 
 class Confirmation extends Component {
   saveAndContinue = e => {
