@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import MainForm from "./components/MainForm";
 import { Container } from "semantic-ui-react";
+import DataHandler from "./api/dataHandler";
 
 class App extends Component {
+  componentDidMount() {
+    new DataHandler();
+  }
   render() {
     return (
       <Container textAlign="left">

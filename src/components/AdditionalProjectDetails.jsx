@@ -65,7 +65,9 @@ class AdditionalProjectDetails extends Component {
               onChange={(e, { value }) => {
                 this.props.handleDropdown({
                   value: value,
-                  input: "engagementModelLevel"
+                  input: "engagementModelLevel",
+                  optionType: "engagementModelLevelOptions",
+                  options: this.state.engagementModelLevels
                 });
               }}
               options={this.state.engagementModelLevels}
@@ -77,7 +79,9 @@ class AdditionalProjectDetails extends Component {
               onChange={(e, { value }) => {
                 this.props.handleDropdown({
                   value: value,
-                  input: "staffingModel"
+                  input: "staffingModel",
+                  optionType: "staffingModelOptions",
+                  options: this.state.staffingModels
                 });
               }}
               defaultValue={values.staffingModel}

@@ -23,13 +23,20 @@ class MainForm extends Component {
     solutionDescription: "",
     resultsAchieved: "",
     industry: "", //id
-    technology: "", //id & caseStudyTechnology entries
+    technology: [], //ids & caseStudyTechnology entries
     practice: "", //id
     engagementModelLevel: "", //id
     staffingModel: "", //id
     sizeOfEngagement: "",
     durationOfEngagement: "",
-    engagementValue: ""
+    engagementValue: "",
+    clientOptions: [],
+    engagementNameOptions: [],
+    industryOptions: [],
+    practiceOptions: [],
+    engagementModelLevelOptions: [],
+    staffingModelOptions: [],
+    technologyOptions: []
   };
 
   nextStep = () => {
@@ -68,12 +75,9 @@ class MainForm extends Component {
     this.setState({ [input]: event.target.value });
   };
 
-  // handleDropdown = ({ value, input }) => {
-  //   this.setState({ [input]: value });
-  // };
   handleDropdown = choice => {
     this.setState({ [choice.input]: choice.value });
-    // console.log(choice.options);
+    this.setState({ [choice.optionType]: choice.options });
   };
 
   clearAdditional = () => {
@@ -104,9 +108,7 @@ class MainForm extends Component {
     });
   };
 
-  componentDidMount() {
-    new DataHandler();
-  }
+  componentDidMount() {}
   render() {
     const { step } = this.state;
     const {
@@ -122,7 +124,14 @@ class MainForm extends Component {
       staffingModel,
       sizeOfEngagement,
       durationOfEngagement,
-      engagementValue
+      engagementValue,
+      clientOptions,
+      engagementNameOptions,
+      industryOptions,
+      practiceOptions,
+      engagementModelLevelOptions,
+      staffingModelOptions,
+      technologyOptions
     } = this.state;
     const values = {
       clientName,
@@ -137,7 +146,14 @@ class MainForm extends Component {
       staffingModel,
       sizeOfEngagement,
       durationOfEngagement,
-      engagementValue
+      engagementValue,
+      clientOptions,
+      engagementNameOptions,
+      industryOptions,
+      practiceOptions,
+      engagementModelLevelOptions,
+      staffingModelOptions,
+      technologyOptions
     };
     switch (step) {
       case 1:

@@ -1,9 +1,40 @@
-import DataHandler from "./dataHandler";
-
-var _ = require("lodash");
+import _ from "lodash";
 
 export default class Storage {
+  /**
+   * Example format 
+   * {
+   *    "engagementName": "Global Atlantic",
+        "businessProblem": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas turpis erat, porta a dolor sit amet, maximus commodo mauris. Nullam.",
+        "solutionDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas turpis erat, porta a dolor sit amet, maximus commodo mauris. Nullam.",
+        "industryId": 3,
+        "practiceId": 2,
+        "staffingDeliveryModelId": 2,
+        "engagementRevenue": 210000,
+        "engagementDuration": 36,
+        "engagementSize": 3,
+        "valueStatement": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas turpis erat, porta a dolor sit amet, maximus commodo mauris. Nullam.",
+        "userName": "emclaugh",
+        "clientId": 1
+   * }
+   */
   _caseStudy = {};
+
+  /**
+   * Example format
+   * [
+   *  {
+   *    "technologyId": 5,
+        "caseStudyId": 1
+   *  },
+      {
+        "technologyId": 14,
+        "caseStudyId": 1
+      }
+   * 
+   * ]
+   */
+  _cstech = [];
   _data = {};
 
   static init() {
@@ -20,61 +51,5 @@ export default class Storage {
 
   static logCaseStudy = () => {
     console.log(JSON.parse(JSON.stringify(this._caseStudy)));
-  };
-
-  /**
-   * Need to pull IDs for
-   *  - client
-   *  - engagementName (from dummy data in the RESTapi)
-   *  - industry
-   *  - technology []
-   *  - practice
-   *  - engagementModelLevel
-   *  - staffingModel
-   *
-   *  To pull ID's...
-   *  - Take the
-   *
-   *
-   *  As well, we need to make entries for
-   *  - caseStudyTechnologies
-   *    Such that an entry is created for each technology used
-   *      caseStudy.id + technology.id * (number of Technologies)
-   *
-   *  Finally, we need to post the cs_techs and the caseStudy
-   *  handle any errors (not likely)
-   *  and re-poll the local _data store to be updated
-   * @param {Object} values
-   */
-  static formatCaseStudy = values => {
-    // Copy values into newEntry
-    var newEntry = JSON.parse(JSON.stringify(values));
-
-    // each of these has to be a search to return the correct ids
-
-    var foundIds = {
-      clientId: Storage.findId("clients", newEntry.clientName),
-      industryId: Storage.findId("industries", newEntry.industry),
-      practiceId: Storage.findId("practices", newEntry.practice),
-      staffingModelId: Storage.findId(
-        "staffingDeliveryModels",
-        newEntry.staffingModel
-      ),
-      // this one will break since the key is called engagementModel everywhere instead of engagementModelLevel
-      engagementModelId: Storage.findId(
-        "engagementModelLevels",
-        newEntry.engagementModelLevel
-      )
-    };
-
-    console.log(foundIds);
-
-    delete newEntry.clientName;
-    delete newEntry.industry;
-    delete newEntry.practice;
-    delete newEntry.engagementModelLevel;
-    delete newEntry.staffingModel;
-
-    return _.merge(newEntry, foundIds);
   };
 }

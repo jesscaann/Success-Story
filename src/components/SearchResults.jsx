@@ -14,16 +14,19 @@ class SearchResults extends Component {
   handleMenu = e => {
     e.preventDefault();
     this.props.handleMainMenu();
+    this.props.clear();
   };
 
   handleDetails = e => {
     e.preventDefault();
     this.props.handleEnterDetails();
+    this.props.clear();
   };
 
   handleSearch = e => {
     e.preventDefault();
     this.props.handleEnterSearch();
+    this.props.clear();
   };
 
   render() {

@@ -61,8 +61,9 @@ class EnterEngagement extends Component {
               placeholder="Client Name"
               onChange={(e, { value }) => {
                 this.props.handleDropdown({
-                  value: value,
                   input: "clientName",
+                  value: value,
+                  optionType: "clientOptions",
                   options: this.state.clients
                 });
               }}
@@ -78,6 +79,7 @@ class EnterEngagement extends Component {
                 this.props.handleDropdown({
                   value: value,
                   input: "engagementName",
+                  optionType: "engagementNameOptions",
                   options: this.state.engagements
                 });
               }}
