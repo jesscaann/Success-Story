@@ -1,9 +1,6 @@
 import api from "./axios-rest-connection";
 
 class restapi {
-  /**
-   * TODO: post the actual case study with ID's and such
-   */
   static postCaseStudy = async entry => {
     var caseStudyId = await api.post("/casestudies/", entry).then(res => {
       return res.data.id;
