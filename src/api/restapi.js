@@ -17,22 +17,21 @@ class restapi {
     return cs_techId;
   };
 
+  /**
+   * This function async polls the rest API for the
+   * case studies. It is needed so that later when a user
+   * is submitting their case stduy information, we can check
+   * for duplicates without polling the database more than once.
+   *
+   * As well, since these are not displayed in a dropdown menu
+   * we do not need to manipulate each object (see other methods
+   * like getIndustries())
+   *
+   * Likely, the implementation of this function might change over
+   * time, or the implementation of the populateCaseStudies() method in
+   * data.js
+   */
   static getCaseStudies = async () => {
-    /**
-     * This function async polls the rest API for the
-     * case studies. It is needed so that later when a user
-     * is submitting their case stduy information, we can check
-     * for duplicates without polling the database more than once.
-     *
-     * As well, since these are not displayed in a dropdown menu
-     * we do not need to manipulate each object (see other methods
-     * like getIndustries())
-     *
-     * Likely, the implementation of this function might change over
-     * time, or the implementation of the populateCaseStudies() method in
-     * data.js
-     */
-
     var caseStudies = {};
 
     await api.get("/casestudies/").then(res => {
