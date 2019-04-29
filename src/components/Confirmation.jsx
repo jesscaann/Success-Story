@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Header, Button, List, Table, Menu } from "semantic-ui-react";
+import DataHandler from "../api/dataHandler";
 
 class Confirmation extends Component {
   saveAndContinue = e => {
     e.preventDefault();
+    new DataHandler().submitCaseStudy(this.props.values);
     this.props.nextStep();
   };
 
@@ -37,14 +39,14 @@ class Confirmation extends Component {
         industry,
         technology,
         practice,
-        engagementModel,
+        engagementModelLevel,
         staffingModel,
         sizeOfEngagement,
         durationOfEngagement,
         engagementValue
       }
     } = this.props;
-    console.log(this.props.values);
+
     return (
       <div>
         <Menu>
@@ -64,6 +66,9 @@ class Confirmation extends Component {
         <Header size="huge"> Engagement Details </Header>
         <Header size="medium">Engagement Name:</Header>
         <List.Content>{engagementName}</List.Content>
+        <br />
+        <Header size="medium">Client Name:</Header>
+        <List.Content>{clientName}</List.Content>
         <br />
         <Header size="small">Business Challenge:</Header>
         <List.Content>{businessProblem}</List.Content>
@@ -100,7 +105,7 @@ class Confirmation extends Component {
             <Table.Row>
               <Table.Cell>Engagement Model</Table.Cell>
               <Table.Cell>
-                <List.Content>{engagementModel}</List.Content>
+                <List.Content>{engagementModelLevel}</List.Content>
               </Table.Cell>
             </Table.Row>
             <Table.Row>

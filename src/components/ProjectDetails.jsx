@@ -74,7 +74,9 @@ class ProjectDetails extends Component {
               onChange={(e, { value }) => {
                 this.props.handleDropdown({
                   value: value,
-                  input: "industry"
+                  input: "industry",
+                  optionType: "industryOptions",
+                  options: this.state.industries
                 });
               }}
               defaultValue={values.industry}
@@ -89,7 +91,9 @@ class ProjectDetails extends Component {
               onChange={(e, { value }) => {
                 this.props.handleDropdown({
                   value: value,
-                  input: "technology"
+                  input: "technology",
+                  optionType: "technologyOptions",
+                  options: this.state.technologies
                 });
               }}
               defaultValue={values.technology}
@@ -102,7 +106,9 @@ class ProjectDetails extends Component {
               onChange={(e, { value }) => {
                 this.props.handleDropdown({
                   value: value,
-                  input: "practice"
+                  input: "practice",
+                  optionType: "practiceOptions",
+                  options: this.state.practices
                 });
               }}
               defaultValue={values.practice}

@@ -37,7 +37,7 @@ class CaseStudyResult extends Component {
         industry,
         technology,
         practice,
-        engagementModel,
+        engagementModelLevel,
         staffingModel,
         sizeOfEngagement,
         durationOfEngagement,
@@ -64,6 +64,9 @@ class CaseStudyResult extends Component {
         <Header size="huge"> Engagement Details </Header>
         <Header size="medium">Engagement Name:</Header>
         <List.Content>{engagementName}</List.Content>
+        <br />
+        <Header size="medium">Client Name:</Header>
+        <List.Content>{clientName}</List.Content>
         <br />
         <Header size="small">Business Challenge:</Header>
         <List.Content>{businessProblem}</List.Content>
@@ -98,9 +101,9 @@ class CaseStudyResult extends Component {
               </Table.Cell>
             </Table.Row>
             <Table.Row>
-              <Table.Cell>Engagement Model</Table.Cell>
+              <Table.Cell>Engagement Model Level</Table.Cell>
               <Table.Cell>
-                <List.Content>{engagementModel}</List.Content>
+                <List.Content>{engagementModelLevel}</List.Content>
               </Table.Cell>
             </Table.Row>
             <Table.Row>

@@ -1,6 +1,25 @@
 import api from "./axios-rest-connection";
 
 class restapi {
+  /**
+   * TODO: post the actual case study with ID's and such
+   */
+  static postCaseStudy = async entry => {
+    var caseStudyId = await api.post("/casestudies/", entry).then(res => {
+      return res.data.id;
+    });
+    return caseStudyId;
+  };
+
+  static postCaseStudyTechnology = async entry => {
+    var cs_techId = await api
+      .post("/casestudytechnologies/", entry)
+      .then(res => {
+        return res.data.id;
+      });
+    return cs_techId;
+  };
+
   static getCaseStudies = async () => {
     /**
      * This function async polls the rest API for the
@@ -67,16 +86,18 @@ class restapi {
       staffingModels = res.data;
       staffingModels.forEach(staffingModel => {
         var staffingModelName = staffingModel.modelName;
+        delete staffingModel.modelName;
         delete staffingModel.caseStudies;
 
         staffingModel.key = staffingModelName;
         staffingModel.text = staffingModelName;
         staffingModel.value = staffingModelName;
       });
+      // console.log(staffingModels);
     });
     return staffingModels;
   };
-  static getEngagementModels = async () => {
+  static getEngagementModelLevels = async () => {
     var eModels = {};
     await api.get("/engagementmodels/").then(res => {
       eModels = res.data;
@@ -89,6 +110,7 @@ class restapi {
         eModel.text = modelLevel;
         eModel.value = modelLevel;
       });
+      // console.log(eModels);
     });
 
     return eModels;
@@ -196,25 +218,25 @@ class restapi {
         id: 1,
         key: "Discov&CloudMigrRead",
         text: "Discovery & Cloud Migration Readiness",
-        value: "Discovery & Cloud Migration Readiness "
+        value: "Discovery & Cloud Migration Readiness"
       },
       {
         id: 2,
         key: "EngageName2",
         text: "Engagement Name 2",
-        value: "Engagement Name 2 "
+        value: "Engagement Name 2"
       },
       {
         id: 3,
         key: "EngageName3",
         text: "Engagement Name 3",
-        value: "Engagement Name 3 "
+        value: "Engagement Name 3"
       },
       {
         id: 4,
         key: "EngageName4",
         text: "Engagement Name 4",
-        value: "Engagement Name 4 "
+        value: "Engagement Name 4"
       }
     ];
   };
