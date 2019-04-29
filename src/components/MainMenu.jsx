@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Menu } from "semantic-ui-react";
+import logo from "../images/logo.png";
 
 class MainMenu extends Component {
   handleMenu = e => {
@@ -34,6 +35,12 @@ class MainMenu extends Component {
           </Menu.Item>
         </Menu>
         <h1 className="ui centered">Welcome to the Homepage</h1>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sogeti-logo-2018.svg/1200px-Sogeti-logo-2018.svg.png"
+          alt="Logo"
+          width="500"
+          height="300"
+        />
       </div>
     );
   }
