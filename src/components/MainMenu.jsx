@@ -38,8 +38,8 @@ class MainMenu extends Component {
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sogeti-logo-2018.svg/1200px-Sogeti-logo-2018.svg.png"
           alt="Logo"
-          width="500"
-          height="300"
+          width="600"
+          height="310"
         />
       </div>
     );
