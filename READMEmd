@@ -1,0 +1,38 @@
+---
+
+
+---
+
+<h1 id="sogeti-success-story">Sogeti Success Story</h1>
+<h2 id="technologies-used">Technologies used:</h2>
+<ul>
+<li>NodeJS</li>
+<li>ReactJS</li>
+<li>.NET Core
+<ul>
+<li>Entity Framework <a href="https://github.com/2CARUS/casestudy-redacted">(read-only version here)</a></li>
+</ul>
+</li>
+<li>Azure SQL Database</li>
+<li>Azure DevOPs</li>
+</ul>
+<h3 id="js-dependencies">JS Dependencies:</h3>
+<ul>
+<li>react</li>
+<li>react-dom</li>
+<li>react-scripts</li>
+<li>semantic-ui-react</li>
+</ul>
+<h2 id="dev-install-front-end">Dev Install (front end):</h2>
+<p>Type into your terminal:</p>
+<pre><code>npm install axios react react-dom react-scripts semantic-ui-react --save
+</code></pre>
+<p>or<br>
+<code>npm install</code></p>
+<p>Followed by:</p>
+<pre><code>npm audit fix
+</code></pre>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
+
