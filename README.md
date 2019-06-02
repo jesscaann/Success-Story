@@ -2,33 +2,29 @@
 
 ## Technologies used:
 
-- NodeJS
-- ReactJS
-- .NET Core - Entity Framework
-- Azure SQL Database
-- Azure DevOPs
+ - NodeJS
+ - ReactJS
+ - .NET Core
+	 - Entity Framework [(read-only version here)](https://github.com/2CARUS/casestudy-redacted)
+ - Azure SQL Database
+ - Azure DevOPs
 
 ### JS Dependencies:
-
-- axios
-- lodash
 - react
 - react-dom
 - react-scripts
 - semantic-ui-react
-
 ## Dev Install (front end):
-
 Type into your terminal:
 
-    npm install axios react react-dom react-scripts semantic-ui-react lodash --save
-
+    npm install axios react react-dom react-scripts semantic-ui-react --save
 or
+```npm install```
 
-`npm install`
+Followed by:
 
-Followed by
+    npm audit fix
 
-`npm audit fix`
+ 
 
 > Written with [StackEdit](https://stackedit.io/).
